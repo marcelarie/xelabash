@@ -70,6 +70,13 @@ __xelabash_configure() {
   done
 }
 
+__in_nix_shell() {
+  [[ -n "$IN_NIX_SHELL" ]] && return 0
+  # Fallback heuristic for 'nix shell' and flakes shells:
+  [[ ":$PATH:" == *":/nix/store:"* ]] && return 0
+  return 1
+}
+
 # prepares the prompt variables
 __xelabash_reset_prompt() {
   export __xelabash_PS1_last_exit="$?"
@@ -129,9 +136,23 @@ __xelabash_add_ssh_to_prompt() {
   fi
 }
 
+__xelabash_add_nix_indicator() {
+    if __in_nix_shell; then
+    if [[ "$IN_NIX_SHELL" == "impure" ]]; then
+      __xelabash_PS1_prefix="(impure) ${__xelabash_PS1_prefix}"
+    fi
+    if [[ "$IN_NIX_SHELL" == "1" ]]; then
+      __xelabash_PS1_prefix="(dev) ${__xelabash_PS1_prefix}"
+    fi
+    # __xelabash_PS1_prefix="❆ ${__xelabash_PS1_prefix}"
+    __xelabash_PS1_prefix="❄️ ${__xelabash_PS1_prefix}"
+    fi
+}
+
 # set the prompt
 __xelabash_prompt() {
   __xelabash_reset_prompt
+  __xelabash_add_nix_indicator
   __xelabash_add_exit_code_to_prompt
   __xelabash_add_ssh_to_prompt
   [ -n "$GIT_PROMPT" ] && [ -n "$__xelabash_git_bin" ] && __xelabash_add_git_to_prompt
