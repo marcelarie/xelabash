@@ -78,7 +78,7 @@ __xelabash_reset_prompt() {
     __xelabash_PS1_prefix='\[\e]0;\w\a\]'
   fi
   export __xelabash_PS1_content='\[\e[1m\]\w\[\e[0m\]'
-  export __xelabash_PS1_suffix=' \$ '
+  export __xelabash_PS1_suffix='\n\$ '
 }
 
 # make __xelabash_PS1_suffix red if the previous command failed
