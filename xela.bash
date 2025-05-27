@@ -12,6 +12,15 @@ __xelabash_is_apple_terminal() {
   test "$TERM_PROGRAM" = 'Apple_Terminal'
 }
 
+clear() {
+  command clear
+  __xelabash_prompt
+}
+
+bind -x '"\C-l":clear'
+bind -m vi-command '"\C-l": clear-screen'
+bind -m vi-insert '"\C-l": clear-screen'
+
 __xelabash_configure_completion() {
   bind 'set colored-stats on'
   bind 'set colored-completion-prefix on'
@@ -85,7 +94,7 @@ __xelabash_reset_prompt() {
     __xelabash_PS1_prefix='\[\e]0;\w\a\]'
   fi
   export __xelabash_PS1_content='\[\e[1m\]\w\[\e[0m\]'
-  export __xelabash_PS1_suffix='\n\$ '
+  export __xelabash_PS1_suffix='\n \$ '
 }
 
 # make __xelabash_PS1_suffix red if the previous command failed

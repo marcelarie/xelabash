@@ -9,7 +9,7 @@ case "$(__xelabash_os)" in
     ;;
 esac
 
-alias la='ls -a'
-alias ll='ls -lah'
-alias l='ls'
-alias sl='ls'
+# alias la='ls -a'
+# alias ll='ls -lah'
+# alias l='ls'
+# alias sl='ls'
