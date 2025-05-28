@@ -58,8 +58,10 @@ __xelabash_configure_history() {
 __xelabash_configure_variables() {
   export __xelabash_git_bin
   export __xelabash_kubectl_bin
+  export __xelabash_nix_bin
   __xelabash_git_bin="$(command -v git)"
   __xelabash_kubectl_bin="$(command -v kubectl)"
+  __xelabash_nix_bin="$(command -v nix)"
 }
 
 # load all configuration files
@@ -158,14 +160,22 @@ __xelabash_add_nix_indicator() {
     fi
 }
 
+__xelabash_add_vi_mode_indicator() {
+  bind 'set show-mode-in-prompt on'
+  bind "set vi-ins-mode-string \1\e[1;38;2;19;194;153mi\e[0m\2"
+  bind "set vi-cmd-mode-string \1\e[1;38;2;226;187;5mn\e[0m\2"
+}
+
+
 # set the prompt
 __xelabash_prompt() {
   __xelabash_reset_prompt
-  __xelabash_add_nix_indicator
   __xelabash_add_exit_code_to_prompt
   __xelabash_add_ssh_to_prompt
   [ -n "$GIT_PROMPT" ] && [ -n "$__xelabash_git_bin" ] && __xelabash_add_git_to_prompt
   [ -n "$KUBE_PROMPT" ] && [ -n "$__xelabash_kubectl_bin" ] && __xelabash_add_kube_to_prompt
+  [ -n "$NIX_PROMPT" ] && [ -n "$__xelabash_nix_bin" ] && __xelabash_add_nix_indicator
+  [ -n "$VI_MODE_PROMPT" ] && __xelabash_add_vi_mode_indicator
   export PS1="${__xelabash_PS1_prefix:-}${__xelabash_PS1_content:-}${__xelabash_PS1_suffix:-}"
   history -a
   __xelabash_cleanup
