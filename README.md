@@ -1,3 +1,19 @@
+This is a fork that contains some personal changes that are useful for me.
+
+Those are the following so far:
+
+- vi mode indicator
+- nix mode indicator
+- display the prompt output and the prompt input on separate lines. (this still
+  needs to be changed so its configurable and not by default)
+- disabled default ls alias (I prefer to set those myself, it also needs to
+  configurable instead of default)
+- add clear on C-l
+
+**Enjoy!**
+
+---
+
 # xelabash
 
 ![xelabash](images/base.png)
