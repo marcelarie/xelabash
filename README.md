@@ -2,11 +2,14 @@ This is a fork that contains some personal changes that are useful for me.
 
 Those are the following so far:
 
-- vi mode indicator
-- nix mode indicator
-- display the prompt output and the prompt input on separate lines. (this still
-  needs to be changed so its configurable and not by default)
-- disabled default ls alias (I prefer to set those myself, it also needs to
+- vi mode indicator  
+  <img src="https://github.com/user-attachments/assets/19a5c8fd-d1be-4117-96d1-aa1e49c1b242" height="80" style="vertical-align: baseline;" />
+- nix mode indicator  
+  <img src="https://github.com/user-attachments/assets/a9eac650-bd11-4840-9ee9-d80c436cbb0c" height="70" style="vertical-align: baseline;" />
+- display the prompt output and the prompt input on separate lines. (this still  
+  needs to be changed so its configurable and not by default)  
+  <img src="https://github.com/user-attachments/assets/429e19a1-4b30-461c-9a54-380654162333" height="70" style="vertical-align: baseline;" />
+- disabled default ls alias (I prefer to set those myself, it also needs to  
   configurable instead of default)
 - add clear on C-l
 
